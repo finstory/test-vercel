@@ -58,7 +58,8 @@ server.use(passport_1.default.session());
 passport_1.default.use(new passport_google_oauth20_1.Strategy({
     clientID: env_var_1.envs.CLIENT_ID,
     clientSecret: env_var_1.envs.CLIENT_SECRET,
-    callbackURL: "http://localhost:3000/auth/google/callback"
+    callbackURL: "https://test-vercel-xi-peach.vercel.app/auth/google/callback"
+    // callbackURL: "http://localhost:3000/auth/google/callback"
 }, (accessToken, refreshToken, profile, done) => __awaiter(void 0, void 0, void 0, function* () {
     var _a, _b;
     try {

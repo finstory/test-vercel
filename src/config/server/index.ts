@@ -63,7 +63,8 @@ server.use(passport.session());
 passport.use(new GoogleStrategy({
   clientID: envs.CLIENT_ID,
   clientSecret: envs.CLIENT_SECRET,
-  callbackURL: "http://localhost:3000/auth/google/callback"
+  callbackURL: "https://test-vercel-xi-peach.vercel.app/auth/google/callback"
+  // callbackURL: "http://localhost:3000/auth/google/callback"
 },
 async (accessToken, refreshToken, profile, done) => {
 
