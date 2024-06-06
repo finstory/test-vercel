@@ -14,7 +14,7 @@ const route:IRouter = Router()
 
 route.get('/', (req, res) => {
     res.send(`
-      <h1>Login</h1>
+      <h1>Login:</h1>
       <a href=/auth/google>Login with Google</a>
     `);
   });
