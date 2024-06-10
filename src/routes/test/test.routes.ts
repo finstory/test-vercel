@@ -15,7 +15,7 @@ const route: IRouter = express.Router();
 route.get('/test', async (req: Request, res: Response, next: NextFunction) => {
    try {
     const apiKey = envs.IPDATA_KEY;
-    const geoInfo = await getGeoInfo(req);
+    const geoInfo = await getGeoInfo(req.ip);
 
     res.json({
         ip: addressIp(req), // Espera a que getAddressIp() se resuelva

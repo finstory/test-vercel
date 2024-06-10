@@ -18,10 +18,9 @@ const env_var_1 = require("../../config/plugin/env-var");
 const request_ip_middleware_1 = require("../../middleware/request-ip/request-ip.middleware");
 const ipGet = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const user = req;
         const ipClient = require;
         const apiKey = env_var_1.envs.IPDATA_KEY;
-        const geoInfo = yield (0, request_ip_middleware_1.getGeoInfo)(user);
+        const geoInfo = yield (0, request_ip_middleware_1.getGeoInfo)(req.ip);
         res.json({
             ip: (0, request_ip_middleware_1.addressIp)(req),
             geo: request_ip_middleware_1.getGeoInfo || 'No se pudo determinar la ubicación de la IP'

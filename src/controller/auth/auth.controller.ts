@@ -7,10 +7,9 @@ import { IUser } from "../../database/mongo/model/User.model";
 
 export const ipGet = async (req: Request, res: Response, next: NextFunction) => {
     try {
-        const user = req
         const ipClient = require
         const apiKey = envs.IPDATA_KEY;
-        const geoInfo = await getGeoInfo(user);
+        const geoInfo = await getGeoInfo(req.ip);
 
         res.json({
             ip: addressIp(req), // Espera a que getAddressIp() se resuelva

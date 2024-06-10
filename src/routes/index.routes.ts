@@ -20,12 +20,10 @@ route.get("/", (req, res) => {
     `);
 });
 
-route.get("/ip", (req, res) => {
+route.get("/ip", async (req, res) => {
   try {
     const ip = req.ip;
-    console.log(ip);
-    // const ip = getGeoInfo(req)
-    res.status(200).json(ip);
+    res.status(200).json(await getGeoInfo(ip));
   } catch (error) {
     res.status(401).json({ msg: "error que se yo" });
   }

@@ -21,10 +21,8 @@ const addressIp = (req) => {
     return ip;
 };
 exports.addressIp = addressIp;
-const getGeoInfo = (req) => __awaiter(void 0, void 0, void 0, function* () {
+const getGeoInfo = (ip) => __awaiter(void 0, void 0, void 0, function* () {
     const apiKey = env_var_1.envs.IPDATA_KEY;
-    const ip = req.ip;
-    console.log(ip);
     // const ipClient: any = addressIp(req);
     // if (!ipClient) {
     //   throw new Error('IP address not found');
