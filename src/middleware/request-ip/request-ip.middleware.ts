@@ -19,13 +19,14 @@ export const addressIp = (req: Request): string | null => {
 
  export const getGeoInfo = async (req: Request) => {
     const apiKey = envs.IPDATA_KEY;
-  
-    const ipClient: any = addressIp(req);
-    if (!ipClient) {
-      throw new Error('IP address not found');
-    }
-    
-    const url = `https://api.ipdata.co/${ipClient}?api-key=${apiKey}`;
+    const ip = req.ip
+    console.log(ip)
+    // const ipClient: any = addressIp(req);
+    // if (!ipClient) {
+    //   throw new Error('IP address not found');
+    // }
+    const url = `https://api.ipdata.co/${ip}?api-key=${apiKey}`;
+    console.log(url)
     try {
       const response = await axios.get(url);
       return response.data;

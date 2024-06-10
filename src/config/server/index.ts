@@ -24,8 +24,8 @@ import requestIp from "request-ip";
 
 //% Initial Methods:
 const server: Express = express();
-server.use(cors());
 server.set("trust proxy", true);
+server.use(cors());
 
 server.use(express.static(path.join(__dirname, "public")));
 // server.name = "API";

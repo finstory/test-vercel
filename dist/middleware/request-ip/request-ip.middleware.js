@@ -23,11 +23,14 @@ const addressIp = (req) => {
 exports.addressIp = addressIp;
 const getGeoInfo = (req) => __awaiter(void 0, void 0, void 0, function* () {
     const apiKey = env_var_1.envs.IPDATA_KEY;
-    const ipClient = (0, exports.addressIp)(req);
-    if (!ipClient) {
-        throw new Error('IP address not found');
-    }
-    const url = `https://api.ipdata.co/${ipClient}?api-key=${apiKey}`;
+    const ip = req.ip;
+    console.log(ip);
+    // const ipClient: any = addressIp(req);
+    // if (!ipClient) {
+    //   throw new Error('IP address not found');
+    // }
+    const url = `https://api.ipdata.co/${ip}?api-key=${apiKey}`;
+    console.log(url);
     try {
         const response = yield axios_1.default.get(url);
         return response.data;

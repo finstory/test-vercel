@@ -28,8 +28,8 @@ const uuid_1 = require("uuid");
 const request_ip_1 = __importDefault(require("request-ip"));
 //% Initial Methods:
 const server = (0, express_1.default)();
-server.use((0, cors_1.default)());
 server.set("trust proxy", true);
+server.use((0, cors_1.default)());
 server.use(express_1.default.static(path_1.default.join(__dirname, "public")));
 // server.name = "API";
 server.use(request_ip_1.default.mw());
