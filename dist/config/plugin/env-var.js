@@ -28,6 +28,7 @@ require("dotenv/config");
 const env = __importStar(require("env-var"));
 exports.envs = {
     PORT: env.get("PORT").required().asPortNumber(),
+    URL_GOOGLE: env.get("URL_GOOGLE").required().asString(),
     PROD: env.get("PROD").required().asBool(),
     MONGO_URI: env.get("MONGO_URI").required().asString(),
     MONGO_DB_NAME: env.get("MONGO_DB_NAME").required().asString(),
@@ -39,6 +40,6 @@ exports.envs = {
     CLIENT_ID: env.get("CLIENT_ID").required().asString(),
     CLIENT_SECRET: env.get("CLIENT_SECRET").required().asString(),
     SESION_SECRET: env.get("SESION_SECRET").required().asString(),
-    IPDATA_KEY: env.get("IPDATA_KEY").required().asString()
+    IPDATA_KEY: env.get("IPDATA_KEY").required().asString(),
 };
 //# sourceMappingURL=env-var.js.map

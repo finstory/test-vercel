@@ -50,7 +50,7 @@ server.use((0, express_session_1.default)({
     secret: env_var_1.envs.SESION_SECRET,
     resave: false,
     saveUninitialized: false,
-    cookie: { secure: false }
+    cookie: { secure: false },
 }));
 server.use(passport_1.default.initialize());
 server.use(passport_1.default.session());
@@ -58,7 +58,7 @@ server.use(passport_1.default.session());
 passport_1.default.use(new passport_google_oauth20_1.Strategy({
     clientID: env_var_1.envs.CLIENT_ID,
     clientSecret: env_var_1.envs.CLIENT_SECRET,
-    callbackURL: "https://test-vercel-xi-peach.vercel.app/auth/google/callback"
+    callbackURL: env_var_1.envs.URL_GOOGLE
     // callbackURL: "http://localhost:3000/auth/google/callback"
 }, (accessToken, refreshToken, profile, done) => __awaiter(void 0, void 0, void 0, function* () {
     var _a, _b;

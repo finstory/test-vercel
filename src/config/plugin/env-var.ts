@@ -3,7 +3,7 @@ import * as env from "env-var";
 
 export const envs = {
   PORT: env.get("PORT").required().asPortNumber(),
-
+  URL_GOOGLE: env.get("URL_GOOGLE").required().asString(),
 
   PROD: env.get("PROD").required().asBool(),
   MONGO_URI: env.get("MONGO_URI").required().asString(),
@@ -18,5 +18,5 @@ export const envs = {
   CLIENT_SECRET: env.get("CLIENT_SECRET").required().asString(),
 
   SESION_SECRET: env.get("SESION_SECRET").required().asString(),
-  IPDATA_KEY: env.get("IPDATA_KEY").required().asString()
+  IPDATA_KEY: env.get("IPDATA_KEY").required().asString(),
 };

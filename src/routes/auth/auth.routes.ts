@@ -1,18 +1,29 @@
 import { IRouter, Router } from "express";
-
-import { firstAuthenticate, logoutGet, secondAuthenticate, unauthorizedGet } from "../../controller/auth/auth.controller";
-
+import passport from "passport";
+import {
+  firstAuthenticate,
+  logoutGet,
+  secondAuthenticate,
+  unauthorizedGet,
+} from "../../controller/auth/auth.controller";
 
 const route: IRouter = Router();
 
-route.get("/auth/google", firstAuthenticate);
+route.get(
+  "/auth/google",
+  passport.authenticate("google", { scope: ["email", "profile"] })
+);
 
-route.get("/auth/google/callback", secondAuthenticate);
+route.get(
+  "/auth/google/callback",
+  passport.authenticate("google", {
+    failureRedirect: "/auth/google/unauthorized",
+    successRedirect: "/protected",
+  })
+);
 
-route.get("/auth/google/unauthorized",unauthorizedGet );
+route.get("/auth/google/unauthorized");
 
-route.get('/logout', logoutGet );
+route.get("/logout", logoutGet);
 
-
-
-export { route as authRoute }
+export { route as authRoute };

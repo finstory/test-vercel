@@ -22,7 +22,7 @@ exports.testRoute = route;
 route.get('/test', (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const apiKey = env_var_1.envs.IPDATA_KEY;
-        const geoInfo = yield (0, request_ip_middleware_1.getGeoInfo)(req, apiKey);
+        const geoInfo = yield (0, request_ip_middleware_1.getGeoInfo)(req);
         res.json({
             ip: (0, request_ip_middleware_1.addressIp)(req),
             geo: geoInfo || 'No se pudo determinar la ubicación de la IP'

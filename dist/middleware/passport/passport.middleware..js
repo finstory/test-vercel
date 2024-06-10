@@ -7,10 +7,11 @@ const ensureAuthenticated = (req, res, next) => {
     if (req.isAuthenticated()) {
         // Si el usuario está autenticado, continúa con la solicitud
         return next();
+        // iopiop
     }
     else {
         // Si el usuario no está autenticado, redirige a la página de inicio de sesión
-        res.redirect('/login');
+        res.redirect("/login");
     }
 };
 exports.ensureAuthenticated = ensureAuthenticated;

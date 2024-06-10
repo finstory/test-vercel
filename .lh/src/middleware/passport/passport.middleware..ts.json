@@ -1,0 +1,30 @@
+{
+    "sourceFile": "src/middleware/passport/passport.middleware..ts",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 3,
+            "patches": [
+                {
+                    "date": 1717767544444,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1717767554487,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,9 +5,9 @@\n     // Passport.js agrega el método isAuthenticated() al objeto req\r\n     if (req.isAuthenticated()) {\r\n         // Si el usuario está autenticado, continúa con la solicitud\r\n         return next();\r\n-        \r\n+        +\r\n     } else {\r\n         // Si el usuario no está autenticado, redirige a la página de inicio de sesión\r\n         res.redirect('/login');\r\n     }\r\n"
+                },
+                {
+                    "date": 1717767561305,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,15 +1,18 @@\n-import { Request, Response, NextFunction } from 'express';\r\n+import { Request, Response, NextFunction } from \"express\";\r\n \r\n // Middleware para verificar si el usuario está autenticado\r\n-export const ensureAuthenticated = (req: Request, res: Response, next: NextFunction) => {\r\n-    // Passport.js agrega el método isAuthenticated() al objeto req\r\n-    if (req.isAuthenticated()) {\r\n-        // Si el usuario está autenticado, continúa con la solicitud\r\n-        return next();\r\n-        +\r\n-    } else {\r\n-        // Si el usuario no está autenticado, redirige a la página de inicio de sesión\r\n-        res.redirect('/login');\r\n-    }\r\n+export const ensureAuthenticated = (\r\n+  req: Request,\r\n+  res: Response,\r\n+  next: NextFunction\r\n+) => {\r\n+  // Passport.js agrega el método isAuthenticated() al objeto req\r\n+  if (req.isAuthenticated()) {\r\n+    // Si el usuario está autenticado, continúa con la solicitud\r\n+    return next();\r\n+    // iopiop\r\n+  } else {\r\n+    // Si el usuario no está autenticado, redirige a la página de inicio de sesión\r\n+    res.redirect(\"/login\");\r\n+  }\r\n };\r\n-\r\n"
+                },
+                {
+                    "date": 1717767570511,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,9 +10,9 @@\n   if (req.isAuthenticated()) {\r\n     // Si el usuario está autenticado, continúa con la solicitud\r\n     return next();\r\n     // iopiop\r\n-  } else {\r\n+  } else {dsf\r\n     // Si el usuario no está autenticado, redirige a la página de inicio de sesión\r\n     res.redirect(\"/login\");\r\n   }\r\n };\r\n"
+                }
+            ],
+            "date": 1717767544444,
+            "name": "Commit-0",
+            "content": "import { Request, Response, NextFunction } from 'express';\r\n\r\n// Middleware para verificar si el usuario está autenticado\r\nexport const ensureAuthenticated = (req: Request, res: Response, next: NextFunction) => {\r\n    // Passport.js agrega el método isAuthenticated() al objeto req\r\n    if (req.isAuthenticated()) {\r\n        // Si el usuario está autenticado, continúa con la solicitud\r\n        return next();\r\n        \r\n    } else {\r\n        // Si el usuario no está autenticado, redirige a la página de inicio de sesión\r\n        res.redirect('/login');\r\n    }\r\n};\r\n\r\n"
+        }
+    ]
+}

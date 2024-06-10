@@ -13,14 +13,16 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getGeoInfo = exports.addressIp = void 0;
-const request_ip_1 = __importDefault(require("request-ip"));
 const axios_1 = __importDefault(require("axios"));
+const env_var_1 = require("../../config/plugin/env-var");
 const addressIp = (req) => {
-    const ip = request_ip_1.default.getClientIp(req);
+    // const ip = requestIp.getClientIp(req);
+    const ip = req.ip;
     return ip;
 };
 exports.addressIp = addressIp;
-const getGeoInfo = (req, apiKey) => __awaiter(void 0, void 0, void 0, function* () {
+const getGeoInfo = (req) => __awaiter(void 0, void 0, void 0, function* () {
+    const apiKey = env_var_1.envs.IPDATA_KEY;
     const { user } = req;
     if (!user) {
         throw new Error('User is undefined');

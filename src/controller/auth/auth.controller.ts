@@ -10,7 +10,7 @@ export const ipGet = async (req: Request, res: Response, next: NextFunction) => 
         const user = req
         const ipClient = require
         const apiKey = envs.IPDATA_KEY;
-        const geoInfo = await getGeoInfo(user, apiKey);
+        const geoInfo = await getGeoInfo(user);
 
         res.json({
             ip: addressIp(req), // Espera a que getAddressIp() se resuelva

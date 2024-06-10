@@ -1,0 +1,22 @@
+{
+    "sourceFile": "src/middleware/isLoggedIn.ts",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1717767843109,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1717767848194,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,6 +4,5 @@\n   if (req.user) { return next(); }\r\n   else {return res.sendStatus(401)};\r\n }\r\n \r\n-\r\n export { isLoggedIn };\r\n"
+                }
+            ],
+            "date": 1717767843109,
+            "name": "Commit-0",
+            "content": "import { Request, Response, NextFunction } from 'express';\r\n\r\nfunction isLoggedIn(req: Request, res: Response, next: NextFunction): void | Response {\r\n  if (req.user) { return next(); }\r\n  else {return res.sendStatus(401)};\r\n}\r\n\r\n\r\nexport { isLoggedIn };\r\n"
+        }
+    ]
+}
