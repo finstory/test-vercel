@@ -1,7 +1,7 @@
 import "dotenv/config";
 import * as env from "env-var";
 
-//hello
+//bay
 export const envs = {
   PORT: env.get("PORT").required().asPortNumber(),
   URL_GOOGLE: env.get("URL_GOOGLE").required().asString(),

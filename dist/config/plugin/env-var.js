@@ -26,7 +26,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.envs = void 0;
 require("dotenv/config");
 const env = __importStar(require("env-var"));
-//hello
+//bay
 exports.envs = {
     PORT: env.get("PORT").required().asPortNumber(),
     URL_GOOGLE: env.get("URL_GOOGLE").required().asString(),
