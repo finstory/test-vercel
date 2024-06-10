@@ -18,11 +18,7 @@ export const addressIp = (req: Request): string | null => {
   
 
  export const getGeoInfo = async (req: Request) => {
-    const apiKey = envs.IPDATA_KEY
-    const { user } = req;
-    if (!user) {
-      throw new Error('User is undefined');
-    }
+    const apiKey = envs.IPDATA_KEY;
   
     const ipClient: any = addressIp(req);
     if (!ipClient) {

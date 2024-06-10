@@ -23,10 +23,6 @@ const addressIp = (req) => {
 exports.addressIp = addressIp;
 const getGeoInfo = (req) => __awaiter(void 0, void 0, void 0, function* () {
     const apiKey = env_var_1.envs.IPDATA_KEY;
-    const { user } = req;
-    if (!user) {
-        throw new Error('User is undefined');
-    }
     const ipClient = (0, exports.addressIp)(req);
     if (!ipClient) {
         throw new Error('IP address not found');
