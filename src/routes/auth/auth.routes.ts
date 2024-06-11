@@ -18,7 +18,7 @@ route.get(
   "/auth/google/callback",
   passport.authenticate("google", {
     failureRedirect: "/auth/google/unauthorized",
-    successRedirect: "/protected",
+    successRedirect: "http://localhost:3000/",
   })
 );
 
