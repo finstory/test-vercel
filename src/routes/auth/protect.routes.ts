@@ -15,9 +15,11 @@ router.get("/protected", isLoggedIn, (req: Request, res: Response) => {
     !user.emails ||
     !user.emails.length ||
     !user.provider
-  ) {
+  )
     res.status(400).send("User profile is incomplete.");
-  } else  res.status(200).json(user);
+  //  else  res.status(200).json(user);
+  else res.redirect("http://localhost:3000/");
+
   // res.send(`
   //     <img width=80 src="${user.photos[0].value}" />
   //     <h1>Hello ${user.displayName}</h1>
