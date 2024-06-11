@@ -12,7 +12,7 @@ exports.authRoute = route;
 route.get("/auth/google", passport_1.default.authenticate("google", { scope: ["email", "profile"] }));
 route.get("/auth/google/callback", passport_1.default.authenticate("google", {
     failureRedirect: "/auth/google/unauthorized",
-    successRedirect: "http://localhost:3000/",
+    successRedirect: "/protected",
 }));
 route.get("/auth/google/unauthorized");
 route.get("/logout", auth_controller_1.logoutGet);

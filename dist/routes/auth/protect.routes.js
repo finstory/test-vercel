@@ -15,8 +15,10 @@ router.get("/protected", isLoggedIn_1.isLoggedIn, (req, res) => {
         !user.provider)
         res.status(400).send("User profile is incomplete.");
     //  else  res.status(200).json(user);
-    else
+    else {
+        res.cookie("user", user); // Guarda el usuario en las cookies
         res.redirect("http://localhost:3000/");
+    }
     // res.send(`
     //     <img width=80 src="${user.photos[0].value}" />
     //     <h1>Hello ${user.displayName}</h1>
