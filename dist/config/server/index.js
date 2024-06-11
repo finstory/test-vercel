@@ -50,8 +50,15 @@ server.use((0, express_session_1.default)({
     secret: env_var_1.envs.SESION_SECRET,
     resave: false,
     saveUninitialized: false,
-    cookie: { secure: false },
+    cookie: { secure: false, httpOnly: false },
 }));
+server.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Credentials", "true");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    res.header("Access-Control-Allow-Methods", "GET, PATCH, POST, OPTIONS, PUT, DELETE");
+    next();
+});
 server.use(passport_1.default.initialize());
 server.use(passport_1.default.session());
 //Configuracion de estatregia de google
