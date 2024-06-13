@@ -19,7 +19,7 @@ router.get("/auth/google/callback", passport_1.default.authenticate('google', { 
         secure: true,
         sameSite: 'lax' // Restringe el envío de cookies a peticiones del mismo sitio (CSRF protection)
     });
-    res.redirect('http://localhost:3000/');
+    res.redirect('/protected');
 });
 router.get("/auth/google/unauthorized", (req, res) => {
     res.status(404).json({

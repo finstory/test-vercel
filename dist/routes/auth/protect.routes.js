@@ -9,13 +9,10 @@ router.get('/protected', (req, res) => {
         // Obtener la cookie
         const cookieValue = req.cookies.cookie;
         // Enviar la cookie al frontend en formato JSON
-        res.json({
-            message: `Hola, ${req.user.displayName}`,
-            cookieValue: cookieValue
-        });
+        res.json({ cookieValue });
     }
     else {
-        res.redirect('/auth/google');
+        res.status(401).json({ error: 'No autorizado' });
     }
 });
 //# sourceMappingURL=protect.routes.js.map

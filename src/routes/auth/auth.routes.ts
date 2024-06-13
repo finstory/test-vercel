@@ -23,7 +23,7 @@ router.get("/auth/google/callback", passport.authenticate('google', { failureRed
       secure: true, // Solo se enviará la cookie a través de HTTPS si esta es verdadera
       sameSite: 'lax' // Restringe el envío de cookies a peticiones del mismo sitio (CSRF protection)
   });
-  res.redirect('http://localhost:3000/');
+  res.redirect('/protected');
 });
 
 
