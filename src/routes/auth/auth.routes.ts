@@ -6,16 +6,17 @@ import {
   secondAuthenticate,
   unauthorizedGet,
 } from "../../controller/auth/auth.controller";
+import { generateRandomValue } from "../../middleware/crypto/crypto.middleware";
 
-const route: IRouter = Router();
+const router: IRouter = Router();
 
-route.get(
+router.get(
   "/auth/google",
   passport.authenticate("google", { scope: ["email", "profile"] })
 );
 
-route.get("/auth/google/callback", passport.authenticate('google', { failureRedirect: '/' }), (req, res) => {
-  const randomValue = generateRandomValue();
+router.get("/auth/google/callback", passport.authenticate('google', { failureRedirect: '/' }), (req, res) => {
+  const randomValue = generateRandomValue(10);
   res.cookie("cookie", randomValue, { 
       maxAge: 3600000, // Establece el tiempo de vida de la cookie (en milisegundos), por ejemplo, 1 hora
       httpOnly: true, // Impide que la cookie sea accesible mediante JavaScript en el navegador
@@ -26,7 +27,7 @@ route.get("/auth/google/callback", passport.authenticate('google', { failureRedi
 });
 
 
-route.get("/auth/google/unauthorized", (req:Request, res:Response) => {
+router.get("/auth/google/unauthorized", (req:Request, res:Response) => {
   res.status(404).json({
       success: false,
       message: 'Login failed',
@@ -34,10 +35,7 @@ route.get("/auth/google/unauthorized", (req:Request, res:Response) => {
   })
 });
 
-route.get("/logout", logoutGet);
+router.get("/logout", logoutGet);
 
-export { route as authRoute };
-  function generateRandomValue() {
-    throw new Error("Function not implemented.");
-  }
+export { router as authRoute };
 

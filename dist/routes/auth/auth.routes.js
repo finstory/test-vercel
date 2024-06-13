@@ -7,11 +7,12 @@ exports.authRoute = void 0;
 const express_1 = require("express");
 const passport_1 = __importDefault(require("passport"));
 const auth_controller_1 = require("../../controller/auth/auth.controller");
-const route = (0, express_1.Router)();
-exports.authRoute = route;
-route.get("/auth/google", passport_1.default.authenticate("google", { scope: ["email", "profile"] }));
-route.get("/auth/google/callback", passport_1.default.authenticate('google', { failureRedirect: '/' }), (req, res) => {
-    const randomValue = generateRandomValue();
+const crypto_middleware_1 = require("../../middleware/crypto/crypto.middleware");
+const router = (0, express_1.Router)();
+exports.authRoute = router;
+router.get("/auth/google", passport_1.default.authenticate("google", { scope: ["email", "profile"] }));
+router.get("/auth/google/callback", passport_1.default.authenticate('google', { failureRedirect: '/' }), (req, res) => {
+    const randomValue = (0, crypto_middleware_1.generateRandomValue)(10);
     res.cookie("cookie", randomValue, {
         maxAge: 3600000,
         httpOnly: true,
@@ -20,15 +21,12 @@ route.get("/auth/google/callback", passport_1.default.authenticate('google', { f
     });
     res.redirect('http://localhost:3000/');
 });
-route.get("/auth/google/unauthorized", (req, res) => {
+router.get("/auth/google/unauthorized", (req, res) => {
     res.status(404).json({
         success: false,
         message: 'Login failed',
         user: false
     });
 });
-route.get("/logout", auth_controller_1.logoutGet);
-function generateRandomValue() {
-    throw new Error("Function not implemented.");
-}
+router.get("/logout", auth_controller_1.logoutGet);
 //# sourceMappingURL=auth.routes.js.map
