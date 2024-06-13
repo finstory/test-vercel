@@ -11,7 +11,7 @@ export const startSocket = () => {
   // Iniciar el servidor de Socket.IO
   io.listen(3002);
 };
-
+//
 export const sendCookies = (cookie: any) => {
   io.emit("session", { cookie });
 };

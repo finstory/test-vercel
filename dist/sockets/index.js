@@ -12,6 +12,7 @@ const startSocket = () => {
     io.listen(3002);
 };
 exports.startSocket = startSocket;
+//
 const sendCookies = (cookie) => {
     io.emit("session", { cookie });
 };
