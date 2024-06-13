@@ -6,12 +6,12 @@ const router = (0, express_1.Router)();
 exports.protectedRouter = router;
 router.get('/protected', (req, res) => {
     if (req.isAuthenticated()) {
-        // Obtener cookies
-        const sessionCookie = req.cookies.session;
+        // Obtener la cookie
+        const cookieValue = req.cookies.cookie;
         // Enviar la cookie al frontend en formato JSON
         res.json({
             message: `Hola, ${req.user.displayName}`,
-            sessionCookie: sessionCookie
+            cookieValue: cookieValue
         });
     }
     else {

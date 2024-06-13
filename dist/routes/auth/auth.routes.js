@@ -11,6 +11,13 @@ const route = (0, express_1.Router)();
 exports.authRoute = route;
 route.get("/auth/google", passport_1.default.authenticate("google", { scope: ["email", "profile"] }));
 route.get("/auth/google/callback", passport_1.default.authenticate('google', { failureRedirect: '/' }), (req, res) => {
+    const randomValue = generateRandomValue();
+    res.cookie("cookie", randomValue, {
+        maxAge: 3600000,
+        httpOnly: true,
+        secure: true,
+        sameSite: 'lax' // Restringe el envío de cookies a peticiones del mismo sitio (CSRF protection)
+    });
     res.redirect('http://localhost:3000/');
 });
 route.get("/auth/google/unauthorized", (req, res) => {
@@ -21,4 +28,7 @@ route.get("/auth/google/unauthorized", (req, res) => {
     });
 });
 route.get("/logout", auth_controller_1.logoutGet);
+function generateRandomValue() {
+    throw new Error("Function not implemented.");
+}
 //# sourceMappingURL=auth.routes.js.map
