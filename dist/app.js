@@ -16,5 +16,6 @@ const upServer = () => {
         console.log(colors_1.default.italic(`Server listening on port ${PORT}`));
     });
 };
+//$ MMMM
 connectDB ? (0, connection_1.default)(upServer, initialDropDB) : upServer();
 //# sourceMappingURL=app.js.map
