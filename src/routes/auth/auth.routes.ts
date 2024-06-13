@@ -15,27 +15,31 @@ router.get(
   passport.authenticate("google", { scope: ["email", "profile"] })
 );
 
-router.get("/auth/google/callback", passport.authenticate('google', { failureRedirect: '/', successRedirect: "http://localhost:3000"  }), (req, res) => {
-  const randomValue = generateRandomValue(10);
-  res.cookie("cookie", randomValue, { 
-      maxAge: 3600000, // Establece el tiempo de vida de la cookie (en milisegundos), por ejemplo, 1 hora
-      httpOnly: false, // Impide que la cookie sea accesible mediante JavaScript en el navegador
-      secure: false, // Solo se enviará la cookie a través de HTTPS si esta es verdadera
-      sameSite: 'lax' // Restringe el envío de cookies a peticiones del mismo sitio (CSRF protection)
-  });
- 
-});
+import fs from "fs";
+import { sendCookies } from "../../sockets";
+router.get(
+  "/auth/google/callback",
+  passport.authenticate("google", { failureRedirect: "/" }),
+  async (req, res) => {
+    try {
 
+      const cookieValue = req.headers['cookie'];
+       sendCookies(cookieValue);
+      res.redirect("http://localhost:3001/")
+    } catch (error) {
+      console.error(error);
+    }
+  }
+);
 
-router.get("/auth/google/unauthorized", (req:Request, res:Response) => {
+router.get("/auth/google/unauthorized", (req: Request, res: Response) => {
   res.status(404).json({
-      success: false,
-      message: 'Login failed',
-      user: false
-  })
+    success: false,
+    message: "Login failed",
+    user: false,
+  });
 });
 
 router.get("/logout", logoutGet);
 
 export { router as authRoute };
-

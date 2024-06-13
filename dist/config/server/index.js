@@ -26,6 +26,7 @@ const User_model_1 = require("../../database/mongo/model/User.model");
 const index_routes_1 = __importDefault(require("../../routes/index.routes"));
 const uuid_1 = require("uuid");
 const request_ip_1 = __importDefault(require("request-ip"));
+const sockets_1 = require("../../sockets");
 //% Initial Methods:
 const server = (0, express_1.default)();
 server.set("trust proxy", true);
@@ -65,7 +66,7 @@ server.use(passport_1.default.session());
 passport_1.default.use(new passport_google_oauth20_1.Strategy({
     clientID: env_var_1.envs.CLIENT_ID,
     clientSecret: env_var_1.envs.CLIENT_SECRET,
-    callbackURL: env_var_1.envs.URL_GOOGLE
+    callbackURL: env_var_1.envs.URL_GOOGLE,
     // callbackURL: "http://localhost:3000/auth/google/callback"
 }, (accessToken, refreshToken, profile, done) => __awaiter(void 0, void 0, void 0, function* () {
     var _a, _b;
@@ -98,7 +99,8 @@ passport_1.default.use(new passport_google_oauth20_1.Strategy({
 })));
 // Serialización del usuario
 passport_1.default.serializeUser((user, done) => {
-    console.log(user);
+    // console.log(user);
+    (0, sockets_1.sendCookies)(user);
     done(null, user);
 });
 // Deserialización del usuario

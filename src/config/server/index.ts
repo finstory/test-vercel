@@ -21,7 +21,7 @@ import {
 import route from "../../routes/index.routes";
 import { v4 as uuid } from "uuid";
 import requestIp from "request-ip";
-
+import { sendCookies } from "../../sockets";
 
 //% Initial Methods:
 const server: Express = express();
@@ -85,7 +85,7 @@ passport.use(
     {
       clientID: envs.CLIENT_ID,
       clientSecret: envs.CLIENT_SECRET,
-      callbackURL: envs.URL_GOOGLE
+      callbackURL: envs.URL_GOOGLE,
       // callbackURL: "http://localhost:3000/auth/google/callback"
     },
     async (accessToken, refreshToken, profile, done) => {
@@ -121,7 +121,8 @@ passport.use(
 
 // Serialización del usuario
 passport.serializeUser((user, done) => {
-  console.log(user);
+  // console.log(user);
+  sendCookies(user);
   done(null, user);
 });
 
