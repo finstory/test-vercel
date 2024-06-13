@@ -15,8 +15,8 @@ router.get("/auth/google/callback", passport_1.default.authenticate('google', { 
     const randomValue = (0, crypto_middleware_1.generateRandomValue)(10);
     res.cookie("cookie", randomValue, {
         maxAge: 3600000,
-        httpOnly: true,
-        secure: true,
+        httpOnly: false,
+        secure: false,
         sameSite: 'lax' // Restringe el envío de cookies a peticiones del mismo sitio (CSRF protection)
     });
     res.redirect('http://localhost:3400');

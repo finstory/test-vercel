@@ -19,8 +19,8 @@ router.get("/auth/google/callback", passport.authenticate('google', { failureRed
   const randomValue = generateRandomValue(10);
   res.cookie("cookie", randomValue, { 
       maxAge: 3600000, // Establece el tiempo de vida de la cookie (en milisegundos), por ejemplo, 1 hora
-      httpOnly: true, // Impide que la cookie sea accesible mediante JavaScript en el navegador
-      secure: true, // Solo se enviará la cookie a través de HTTPS si esta es verdadera
+      httpOnly: false, // Impide que la cookie sea accesible mediante JavaScript en el navegador
+      secure: false, // Solo se enviará la cookie a través de HTTPS si esta es verdadera
       sameSite: 'lax' // Restringe el envío de cookies a peticiones del mismo sitio (CSRF protection)
   });
   res.redirect('http://localhost:3400');
