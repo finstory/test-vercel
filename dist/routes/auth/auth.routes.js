@@ -11,7 +11,7 @@ const crypto_middleware_1 = require("../../middleware/crypto/crypto.middleware")
 const router = (0, express_1.Router)();
 exports.authRoute = router;
 router.get("/auth/google", passport_1.default.authenticate("google", { scope: ["email", "profile"] }));
-router.get("/auth/google/callback", passport_1.default.authenticate('google', { failureRedirect: '/', successRedirect: "http://localhost:3003" }), (req, res) => {
+router.get("/auth/google/callback", passport_1.default.authenticate('google', { failureRedirect: '/', successRedirect: "http://localhost:3000" }), (req, res) => {
     const randomValue = (0, crypto_middleware_1.generateRandomValue)(10);
     res.cookie("cookie", randomValue, {
         maxAge: 3600000,
