@@ -35,7 +35,7 @@ server.use(express_1.default.static(path_1.default.join(__dirname, "public")));
 server.use(request_ip_1.default.mw());
 server.use(body_parser_1.default.urlencoded({ extended: true, limit: "1000mb" }));
 server.use(body_parser_1.default.json({ limit: "1000mb" }));
-server.use((0, cookie_parser_1.default)());
+server.use((0, cookie_parser_1.default)(env_var_1.envs.SESSION_KEY));
 // DEBUG
 server.use((0, morgan_1.default)("dev"));
 server.use((req, res, next) => {

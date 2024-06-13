@@ -22,6 +22,7 @@ import route from "../../routes/index.routes";
 import { v4 as uuid } from "uuid";
 import requestIp from "request-ip";
 
+
 //% Initial Methods:
 const server: Express = express();
 server.set("trust proxy", true);
@@ -33,7 +34,8 @@ server.use(requestIp.mw());
 
 server.use(bodyParser.urlencoded({ extended: true, limit: "1000mb" }));
 server.use(bodyParser.json({ limit: "1000mb" }));
-server.use(cookieParser());
+server.use(cookieParser(envs.SESSION_KEY));
+
 // DEBUG
 server.use(morgan("dev"));
 server.use((req: Request, res: Response, next: NextFunction) => {

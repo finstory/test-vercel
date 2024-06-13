@@ -10,10 +10,15 @@ const auth_controller_1 = require("../../controller/auth/auth.controller");
 const route = (0, express_1.Router)();
 exports.authRoute = route;
 route.get("/auth/google", passport_1.default.authenticate("google", { scope: ["email", "profile"] }));
-route.get("/auth/google/callback", passport_1.default.authenticate("google", {
-    failureRedirect: "/auth/google/unauthorized",
-    successRedirect: "/protected",
-}));
-route.get("/auth/google/unauthorized");
+route.get("/auth/google/callback", passport_1.default.authenticate('google', { failureRedirect: '/' }), (req, res) => {
+    res.redirect('http://localhost:3000/');
+});
+route.get("/auth/google/unauthorized", (req, res) => {
+    res.status(404).json({
+        success: false,
+        message: 'Login failed',
+        user: false
+    });
+});
 route.get("/logout", auth_controller_1.logoutGet);
 //# sourceMappingURL=auth.routes.js.map
