@@ -7,13 +7,7 @@ import { generateRandomValue } from "../../middleware/crypto/crypto.middleware";
 const router: IRouter = Router();
 
 router.get('/protected', (req, res) => {
-    const randomValue = generateRandomValue(10);
-    res.cookie("cookie", randomValue, { 
-        maxAge: 3600000, 
-        httpOnly: true, 
-        secure: true, 
-        sameSite: 'lax' 
-    });
+
   
     if (req.isAuthenticated()) {
         // Obtener la cookie
@@ -24,7 +18,21 @@ router.get('/protected', (req, res) => {
         res.status(401).json({ error: 'No autorizado' });
     }
 });
-  
+
+router.get("/profile", async(req, res) => {
+      if(req.user){
+          res.status(200).json({
+              success: true,
+              message: 'Login success',
+              user: req.user,
+          })
+      }else{
+          res.status(401).json({
+              success: false,
+              message: 'You are not logged in',
+          })
+      }
+    })
 
 
 
