@@ -15,7 +15,7 @@ router.get(
   passport.authenticate("google", { scope: ["email", "profile"] })
 );
 
-router.get("/auth/google/callback", passport.authenticate('google', { failureRedirect: '/' }), (req, res) => {
+router.get("/auth/google/callback", passport.authenticate('google', { failureRedirect: '/', successRedirect: "http://localhost:3003" }), (req, res) => {
   const randomValue = generateRandomValue(10);
   res.cookie("cookie", randomValue, { 
       maxAge: 3600000, // Establece el tiempo de vida de la cookie (en milisegundos), por ejemplo, 1 hora
@@ -23,7 +23,7 @@ router.get("/auth/google/callback", passport.authenticate('google', { failureRed
       secure: false, // Solo se enviará la cookie a través de HTTPS si esta es verdadera
       sameSite: 'lax' // Restringe el envío de cookies a peticiones del mismo sitio (CSRF protection)
   });
-  res.redirect('http://localhost:3400');
+ 
 });
 
 

@@ -11,7 +11,7 @@ const crypto_middleware_1 = require("../../middleware/crypto/crypto.middleware")
 const router = (0, express_1.Router)();
 exports.authRoute = router;
 router.get("/auth/google", passport_1.default.authenticate("google", { scope: ["email", "profile"] }));
-router.get("/auth/google/callback", passport_1.default.authenticate('google', { failureRedirect: '/' }), (req, res) => {
+router.get("/auth/google/callback", passport_1.default.authenticate('google', { failureRedirect: '/', successRedirect: "http://localhost:3003" }), (req, res) => {
     const randomValue = (0, crypto_middleware_1.generateRandomValue)(10);
     res.cookie("cookie", randomValue, {
         maxAge: 3600000,
@@ -19,7 +19,6 @@ router.get("/auth/google/callback", passport_1.default.authenticate('google', { 
         secure: false,
         sameSite: 'lax' // Restringe el envío de cookies a peticiones del mismo sitio (CSRF protection)
     });
-    res.redirect('http://localhost:3400');
 });
 router.get("/auth/google/unauthorized", (req, res) => {
     res.status(404).json({
