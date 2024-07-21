@@ -6,7 +6,7 @@
 	"scripts": {
 		"prepare": "husky install",
 		"start": "nodemon src/app.ts",
-		"dev": "nodemon ./src/app.ts",
+		"dev": "nodemon ./dist/app.js",
 		"build": "rimraf dist && tsc",
 		"ts.check": "tsc --project tsconfig.json",
 		"add-build": "git add dist",
