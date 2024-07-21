@@ -10,9 +10,7 @@ import bodyParser from "body-parser";
 import morgan from "morgan";
 import path from "path";
 import cors from "cors";
-import session from "express-session";
 import { envs } from "../plugin/env-var";
-import { Strategy as GoogleStrategy, Profile } from "passport-google-oauth20";
 import passport from "passport";
 import {
   IUser,
@@ -34,7 +32,6 @@ server.use(requestIp.mw());
 
 server.use(bodyParser.urlencoded({ extended: true, limit: "1000mb" }));
 server.use(bodyParser.json({ limit: "1000mb" }));
-server.use(cookieParser(envs.SESSION_KEY));
 
 // DEBUG
 server.use(morgan("dev"));
@@ -52,15 +49,6 @@ server.use((req: Request, res: Response, next: NextFunction) => {
   next();
 });
 
-// Configuración de la sesión
-server.use(
-  session({
-    secret: envs.SESION_SECRET,
-    resave: false,
-    saveUninitialized: false,
-    cookie: { secure: false, httpOnly: false },
-  })
-);
 
 server.use((req: Request, res: Response, next: NextFunction) => {
   res.header("Access-Control-Allow-Origin", "*");
@@ -76,62 +64,8 @@ server.use((req: Request, res: Response, next: NextFunction) => {
   next();
 });
 
-server.use(passport.initialize());
-server.use(passport.session());
-
-//Configuracion de estatregia de google
-passport.use(
-  new GoogleStrategy(
-    {
-      clientID: envs.CLIENT_ID,
-      clientSecret: envs.CLIENT_SECRET,
-      callbackURL: envs.URL_GOOGLE,
-      // callbackURL: "http://localhost:3000/auth/google/callback"
-    },
-    async (accessToken, refreshToken, profile, done) => {
-      try {
-        // Encuentra al usuario basado en su ID de Google
-        let user: IUser = await User.findOne({ id: profile.id });
-        if (user) {
-          return done(null, user);
-        }
-
-        // Si no existe el usuario, créalo
-        user = new User({
-          _id: uuid(),
-          id: profile.id,
-          provider: profile.provider,
-          name: {
-            givenName: profile.name?.givenName,
-            familyName: profile.name?.familyName,
-          },
-          emails: profile.emails,
-          photos: profile.photos,
-          displayName: profile.displayName,
-          // otros campos que pueda tener tu usuario
-        });
-        await user.save();
-        done(null, user);
-      } catch (error) {
-        done(error);
-      }
-    }
-  )
-);
-
-// Serialización del usuario
-passport.serializeUser((user, done) => {
-  // console.log(user);
-  sendCookies(user);
-  done(null, user);
-});
-
-// Deserialización del usuario
-passport.deserializeUser((user: Profile, done) => {
-  done(null, user);
-});
-
 server.use("/", route);
+
 //$ ERROR CATCHING.
 server.use((err: any, req: Request, res: Response, next: NextFunction) => {
   const status = err.status || 500;
