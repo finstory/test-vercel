@@ -5,7 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const colors_1 = __importDefault(require("colors"));
 const server_1 = __importDefault(require("./config/server"));
-// import mongoDB from "./database/mongo/connection";
+const connection_1 = __importDefault(require("./database/mongo/connection"));
 const env_var_1 = require("./config/plugin/env-var");
 const initialDropDB = env_var_1.envs.INITIALDROPDB;
 const PORT = env_var_1.envs.PORT;
@@ -17,6 +17,5 @@ const upServer = () => {
     });
 };
 //$ MMMM
-// connectDB ? mongoDB(upServer, initialDropDB) : upServer();
-upServer();
+connectDB ? (0, connection_1.default)(upServer, initialDropDB) : upServer();
 //# sourceMappingURL=index.js.map

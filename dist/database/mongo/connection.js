@@ -14,10 +14,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importDefault(require("mongoose"));
 const colors_1 = __importDefault(require("colors"));
-const mongoUrl = "envs.MONGO_URI";
-const dbName = "envs.MONGO_DB_NAME";
-const username = "envs.MONGO_USER";
-const password = "envs.MONGO_PASS";
+// import dotenv from 'dotenv';
+//dotenv.config();
+const env_var_1 = require("../../config/plugin/env-var");
+const mongoUrl = env_var_1.envs.MONGO_URI;
+const dbName = env_var_1.envs.MONGO_DB_NAME;
+const username = env_var_1.envs.MONGO_USER;
+const password = env_var_1.envs.MONGO_PASS;
 const connectionOptions = { dbName, auth: { username, password } };
 const mongoDB = (callback, reset) => __awaiter(void 0, void 0, void 0, function* () {
     mongoose_1.default
