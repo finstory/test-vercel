@@ -17,7 +17,7 @@ const colors_1 = __importDefault(require("colors"));
 // import dotenv from 'dotenv';
 //dotenv.config();
 const env_var_1 = require("../../config/plugin/env-var");
-const mongoUrl = env_var_1.envs.MONGO_URI;
+const mongoUrl = env_var_1.envs.MONGODB_URI;
 const dbName = env_var_1.envs.MONGO_DB_NAME;
 const username = env_var_1.envs.MONGO_USER;
 const password = env_var_1.envs.MONGO_PASS;

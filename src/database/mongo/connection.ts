@@ -15,7 +15,7 @@ interface ConnectionOption {
 
 }
 
-const mongoUrl = envs.MONGO_URI;
+const mongoUrl = envs.MONGODB_URI;
 const dbName = envs.MONGO_DB_NAME;
 const username = envs.MONGO_USER;
 const password = envs.MONGO_PASS;
