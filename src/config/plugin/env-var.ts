@@ -5,6 +5,7 @@ import * as env from "env-var";
 export const envs = {
   PORT: env.get("PORT").required().asPortNumber(),
   PROD: env.get("PROD").required().asBool(),
+  BACK_TESTING: env.get("BACK_TESTING").required().asBool(),
 
   MONGO_URI: env.get("MONGO_URI").required().asString(),
   MONGO_DB_NAME: env.get("MONGO_DB_NAME").required().asString(),

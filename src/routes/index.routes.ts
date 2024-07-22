@@ -1,4 +1,7 @@
+
 import { IRouter, Router } from "express";
+import User from "../database/mongo/model/user.model";
+
 
 const route: IRouter = Router();
 // route.use(authRoute);
@@ -7,11 +10,9 @@ const route: IRouter = Router();
 // route.get("/", protectedRouter);
 // route.get("/", testRoute);
 
-route.get("/", (req, res) => {
-  res.send(`
-      <h1>Login</h1>
-      <a href=/auth/google>Login with Google</a>
-    `);
+route.get("/", async (req, res) => {
+  const user = await User.findOne({ email: "facu@hotmail.com" });
+  res.send(user);
 });
 
 export default route;

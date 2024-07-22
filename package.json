@@ -2,10 +2,10 @@
 	"name": "no-country",
 	"version": "1.0.0",
 	"description": "backend",
-	"main": "index.ts",
+	"main": "./src/index.ts",
 	"scripts": {
 		"prepare": "husky install",
-		"start": "nodemon src/index.ts",
+		"start": "nodemon --exec ts-node -r tsconfig-paths/register src/index.ts",
 		"dev": "nodemon ./dist/index.js",
 		"build": "rimraf dist && tsc",
 		"ts.check": "tsc --project tsconfig.json",
@@ -32,10 +32,11 @@
 		"@types/uuid": "^9.0.8",
 		"@types/validator": "^13.11.9",
 		"express": "^4.18.2",
-		"nodemon": "^2.0.20",
+		"nodemon": "^2.0.22",
 		"pre-commit": "^1.2.2",
 		"simple-git-hooks": "^2.11.1",
-		"ts-node": "^10.9.1",
+		"ts-node": "^10.9.2",
+		"tsconfig-paths": "^4.2.0",
 		"typescript": "^4.8.4"
 	},
 	"dependencies": {
@@ -58,6 +59,7 @@
 		"request-ip": "^3.3.0",
 		"rimraf": "^5.0.7",
 		"socket.io": "^4.7.5",
+		"typescript-transform-paths": "^3.4.7",
 		"uuid": "^9.0.1"
 	},
 	"pre-commit": [

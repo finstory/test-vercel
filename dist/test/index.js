@@ -12,16 +12,16 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const express_1 = require("express");
 const user_model_1 = __importDefault(require("../database/mongo/model/user.model"));
-const route = (0, express_1.Router)();
-// route.use(authRoute);
-// route.get("/", authRoute);
-// route.get("/", protectedRouter);
-// route.get("/", testRoute);
-route.get("/", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const user = yield user_model_1.default.findOne({ email: "facu@hotmail.com" });
-    res.send(user);
-}));
-exports.default = route;
-//# sourceMappingURL=index.routes.js.map
+const main = () => __awaiter(void 0, void 0, void 0, function* () {
+    //   User.create({
+    //     email: "facu@hotmail.com",
+    //     password: "asdasdasd",
+    //     name: "facu",
+    //   });
+    user_model_1.default.findOne({ email: "facu@hotmail.com" }).then((user) => {
+        console.log(user);
+    });
+});
+exports.default = main;
+//# sourceMappingURL=index.js.map

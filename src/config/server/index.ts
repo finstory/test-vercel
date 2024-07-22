@@ -12,10 +12,6 @@ import path from "path";
 import cors from "cors";
 import { envs } from "../plugin/env-var";
 import passport from "passport";
-import {
-  IUser,
-  UserModel as User,
-} from "../../database/mongo/model/User.model";
 import route from "../../routes/index.routes";
 import { v4 as uuid } from "uuid";
 import requestIp from "request-ip";
