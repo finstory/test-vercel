@@ -11,6 +11,10 @@ const route: IRouter = Router();
 // route.get("/", testRoute);
 
 route.get("/", async (req, res) => {
+  res.send("work");
+});
+
+route.get("/db", async (req, res) => {
   const user = await User.findOne({ email: "facu@hotmail.com" });
   res.send(user);
 });

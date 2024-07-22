@@ -21,7 +21,10 @@ const mongoUrl = env_var_1.envs.MONGODB_URI;
 const dbName = env_var_1.envs.MONGO_DB_NAME;
 const username = env_var_1.envs.MONGO_USER;
 const password = env_var_1.envs.MONGO_PASS;
-const connectionOptions = { dbName, auth: { username, password } };
+const connectionOptions = {
+    dbName,
+    auth: { username, password },
+};
 const mongoDB = (callback, reset) => __awaiter(void 0, void 0, void 0, function* () {
     mongoose_1.default
         .connect(mongoUrl, {

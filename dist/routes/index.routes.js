@@ -20,6 +20,9 @@ const route = (0, express_1.Router)();
 // route.get("/", protectedRouter);
 // route.get("/", testRoute);
 route.get("/", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    res.send("work");
+}));
+route.get("/db", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const user = yield user_model_1.default.findOne({ email: "facu@hotmail.com" });
     res.send(user);
 }));
