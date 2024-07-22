@@ -7,11 +7,9 @@ const colors_1 = __importDefault(require("colors"));
 const server_1 = __importDefault(require("./config/server"));
 // import mongoDB from "./database/mongo/connection";
 const env_var_1 = require("./config/plugin/env-var");
-const sockets_1 = require("./sockets");
 const initialDropDB = env_var_1.envs.INITIALDROPDB;
 const PORT = env_var_1.envs.PORT;
 const connectDB = env_var_1.envs.CONNECTDB;
-(0, sockets_1.startSocket)();
 //$ SERVER START:
 const upServer = () => {
     server_1.default.listen(PORT, () => {
