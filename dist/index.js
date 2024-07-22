@@ -21,4 +21,4 @@ const upServer = () => {
 //$ MMMM
 // connectDB ? mongoDB(upServer, initialDropDB) : upServer();
 upServer();
-//# sourceMappingURL=app.js.map
+//# sourceMappingURL=index.js.map
