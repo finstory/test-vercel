@@ -8,20 +8,27 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-const user_model_1 = __importDefault(require("../databases/mongoose/model/user.model"));
-const main = () => __awaiter(void 0, void 0, void 0, function* () {
-    //   User.create({
-    //     email: "facu@hotmail.com",
-    //     password: "asdasdasd",
-    //     name: "facu",
-    //   });
-    user_model_1.default.findOne({ email: "facu@hotmail.com" }).then((user) => {
-        console.log(user);
-    });
-});
-exports.default = main;
-//# sourceMappingURL=index.js.map
+class AuthController {
+    constructor() {
+        this.getUserByEmail = (req, res) => __awaiter(this, void 0, void 0, function* () {
+            try {
+                res.send("auth");
+            }
+            catch (error) {
+                res.status(404).send({ error: error.message });
+            }
+        });
+        this.postExample = (req, res) => __awaiter(this, void 0, void 0, function* () {
+            try {
+                res.send("work");
+            }
+            catch (error) {
+                res.status(404).send({ error: error.message });
+            }
+        });
+    }
+}
+const controllers = new AuthController();
+exports.default = controllers;
+//# sourceMappingURL=auth.controller.js.map

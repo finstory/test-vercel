@@ -8,7 +8,7 @@ const body_parser_1 = __importDefault(require("body-parser"));
 const morgan_1 = __importDefault(require("morgan"));
 const path_1 = __importDefault(require("path"));
 const cors_1 = __importDefault(require("cors"));
-const index_routes_1 = __importDefault(require("../../routes/index.routes"));
+const routes_1 = __importDefault(require("../../routes"));
 const request_ip_1 = __importDefault(require("request-ip"));
 //% Initial Methods:
 const server = (0, express_1.default)();
@@ -35,7 +35,7 @@ server.use((req, res, next) => {
     res.header("Access-Control-Allow-Methods", "GET, PATCH, POST, OPTIONS, PUT, DELETE");
     next();
 });
-server.use("/", index_routes_1.default);
+server.use("/", routes_1.default);
 //$ ERROR CATCHING.
 server.use((err, req, res, next) => {
     const status = err.status || 500;

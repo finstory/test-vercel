@@ -1,6 +1,6 @@
 import colors from "colors";
 import server from "./config/server";
-import mongoDB from "./database/mongo/connection";
+import mongoDB from "./databases/mongoose/connection";
 import { envs } from "./config/plugin/env-var";
 import testMain from "./test";
 
@@ -16,5 +16,5 @@ const upServer = () => {
   });
 };
 
-//$ MMMM
+//$ START:
 connectDB ? mongoDB(upServer, initialDropDB) : upServer();

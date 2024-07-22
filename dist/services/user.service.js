@@ -13,15 +13,25 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const user_model_1 = __importDefault(require("../databases/mongoose/model/user.model"));
-const main = () => __awaiter(void 0, void 0, void 0, function* () {
-    //   User.create({
-    //     email: "facu@hotmail.com",
-    //     password: "asdasdasd",
-    //     name: "facu",
-    //   });
-    user_model_1.default.findOne({ email: "facu@hotmail.com" }).then((user) => {
-        console.log(user);
-    });
-});
-exports.default = main;
-//# sourceMappingURL=index.js.map
+class UserService {
+    constructor() {
+        this.findUser = (email) => __awaiter(this, void 0, void 0, function* () {
+            const user = yield user_model_1.default.findOne({ email });
+            if (!user)
+                throw new Error("User not found");
+            return user;
+        });
+        this.createUser = (user) => __awaiter(this, void 0, void 0, function* () {
+            yield user_model_1.default.findOne(user).then((user_getting) => {
+                if (user_getting)
+                    throw new Error("User already exists");
+            });
+            const newUser = new user_model_1.default(user);
+            yield newUser.save();
+            return newUser;
+        });
+    }
+}
+const services = new UserService();
+exports.default = services;
+//# sourceMappingURL=user.service.js.map

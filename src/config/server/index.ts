@@ -12,7 +12,7 @@ import path from "path";
 import cors from "cors";
 import { envs } from "../plugin/env-var";
 import passport from "passport";
-import route from "../../routes/index.routes";
+import route from "../../routes";
 import { v4 as uuid } from "uuid";
 import requestIp from "request-ip";
 import { sendCookies } from "../../sockets";

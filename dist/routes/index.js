@@ -13,18 +13,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
-const user_model_1 = __importDefault(require("../database/mongo/model/user.model"));
+const user_route_1 = __importDefault(require("./user.route"));
 const route = (0, express_1.Router)();
-// route.use(authRoute);
-// route.get("/", authRoute);
-// route.get("/", protectedRouter);
-// route.get("/", testRoute);
+route.use("/user", user_route_1.default);
 route.get("/", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    res.send("work");
-}));
-route.get("/db", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const user = yield user_model_1.default.findOne({ email: "facu@hotmail.com" });
-    res.send(user);
+    res.send("working");
 }));
 exports.default = route;
-//# sourceMappingURL=index.routes.js.map
+//# sourceMappingURL=index.js.map

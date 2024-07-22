@@ -5,7 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const colors_1 = __importDefault(require("colors"));
 const server_1 = __importDefault(require("./config/server"));
-const connection_1 = __importDefault(require("./database/mongo/connection"));
+const connection_1 = __importDefault(require("./databases/mongoose/connection"));
 const env_var_1 = require("./config/plugin/env-var");
 const test_1 = __importDefault(require("./test"));
 const initialDropDB = env_var_1.envs.INITIALDROPDB;
@@ -18,6 +18,6 @@ const upServer = () => {
         console.log(colors_1.default.italic(`Server listening on port ${PORT}`));
     });
 };
-//$ MMMM
+//$ START:
 connectDB ? (0, connection_1.default)(upServer, initialDropDB) : upServer();
 //# sourceMappingURL=index.js.map

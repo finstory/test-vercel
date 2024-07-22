@@ -1,4 +1,4 @@
-import User from "../database/mongo/model/user.model";
+import User from "../databases/mongoose/model/user.model";
 
 const main = async () => {
   //   User.create({
