@@ -17,3 +17,10 @@ export const useFetch = () => {
 
     return name
 }
+export const __FramerMetadata__ = {
+  exports: {
+    useFetch: { type: "variable", annotations: { framerContractVersion: "1" } },
+    __FramerMetadata__: { type: "variable" },
+  },
+};
+//# sourceMappingURL=./useFetch.map
