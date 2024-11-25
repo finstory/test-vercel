@@ -1,8 +1,12 @@
-// test.ts (el archivo remoto)
-import React from "react";
-
-const ExternalComponent = () => (
-  <div>Este es un componente externo cargado dinámicamente.</div>
-);
-
-export default ExternalComponent;
+async function fetchAndPrepareComponent() {
+    try {
+        // Paso 1: Descargar el archivo remoto
+        const response = await fetch("https://random-word-api.herokuapp.com/word");
+        const data = await response.json();
+        console.log(data);
+    } catch (error) {
+        console.error("Error al cargar el componente remoto:", error);
+    }
+}
+fetchAndPrepareComponent();
+export default fetchAndPrepareComponent;
