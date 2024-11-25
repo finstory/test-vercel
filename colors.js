@@ -1,6 +1,7 @@
 export const colors = () => {
     return {
-        primary: "#76C49A",
+        primary: "#8212CC",
+        secondary: "#76C49A",
     }
 }
 
