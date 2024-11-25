@@ -1,5 +1,9 @@
-async function fetchAndPrepareComponent() {
+const tests: string = "Facundo";
+
+const fetchAndPrepareComponent = async (): Promise<any> => {
+
     try {
+        console.log(tests)
         // Paso 1: Descargar el archivo remoto
         const response = await fetch("https://random-word-api.herokuapp.com/word");
         const data = await response.json();
